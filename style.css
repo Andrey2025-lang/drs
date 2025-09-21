@@ -1,0 +1,186 @@
+body {
+  background: #111;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#bouquet {
+  width: 400px;
+  height: 600px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.stem {
+  position: absolute;
+  bottom: 0;
+  width: 13px;
+  height: 330px;
+  background: linear-gradient(120deg, #3a5f0b 60%, #6b8e23 90%, #b6e388 100%);
+  border-radius: 20px 20px 60px 60px/10px 10px 60px 60px;
+  z-index: 1;
+  box-shadow: 0 0 16px #3a5f0b44, 0 2px 12px #b6e38844 inset;
+  overflow: visible;
+}
+.svg-stem {
+  fill: none;
+  stroke: url(#stem-gradient);
+  stroke-width: 13;
+  filter: drop-shadow(0 0 8px #3a5f0b44) drop-shadow(0 2px 8px #b6e38844);
+  stroke-linecap: round;
+}
+
+/* Gradiente para los tallos SVG */
+svg#stems-svg defs {
+  pointer-events: none;
+}
+.stem1 { left: 180px; transform: rotate(-8deg) skewX(-6deg); }
+.stem2 { left: 200px; transform: rotate(0deg) skewX(2deg); }
+.stem3 { left: 220px; transform: rotate(8deg) skewX(6deg); }
+.stem4 { left: 160px; transform: rotate(-15deg) skewX(-10deg); }
+.stem5 { left: 240px; transform: rotate(15deg) skewX(10deg); }
+
+/* Hojas pequeñas en los tallos */
+.leaf {
+  position: absolute;
+  width: 34px;
+  height: 20px;
+  background: radial-gradient(circle at 60% 40%, #b6e388 60%, #6b8e23 100%);
+  border-radius: 60% 100% 60% 100%/100% 60% 100% 60%;
+  box-shadow: 0 2px 8px #6b8e2344;
+  z-index: 2;
+  border-left: 2px solid #6b8e23cc;
+  border-bottom: 1px solid #b6e38899;
+  opacity: 0.95;
+  transition: transform 0.2s;
+}
+.leaf.right {
+  left: 18px;
+  top: 120px;
+  transform: rotate(30deg) scaleX(-1);
+}
+.leaf.left {
+  left: -34px;
+  top: 180px;
+  transform: rotate(-30deg);
+}
+.leaf.small {
+  width: 22px;
+  height: 12px;
+  top: 80px;
+  left: 10px;
+  opacity: 0.8;
+  border-width: 1px;
+  transform: rotate(10deg) scale(0.8);
+}
+.leaf.tiny {
+  width: 14px;
+  height: 8px;
+  top: 220px;
+  left: -10px;
+  opacity: 0.7;
+  border-width: 1px;
+  transform: rotate(-10deg) scale(0.6);
+}
+
+.stem1 { left: 180px; transform: rotate(-8deg); }
+.stem2 { left: 200px; transform: rotate(0deg); }
+.stem3 { left: 220px; transform: rotate(8deg); }
+.stem4 { left: 160px; transform: rotate(-15deg); }
+.stem5 { left: 240px; transform: rotate(15deg); }
+
+.flower {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-10px) scale(1.05); }
+}
+
+
+.flower .petal {
+  position: absolute;
+  width: 44px;
+  height: 66px;
+  background: radial-gradient(circle at 60% 40%, #fffbe0 30%, #ffe066 70%, #ffd700 100%);
+  border-radius: 60% 60% 40% 40%/70% 70% 30% 30%;
+  box-shadow: 0 4px 16px #ffd70055, 0 0 0 2px #fffbe0aa inset;
+  border: 2px solid #ffe066;
+  filter: drop-shadow(0 0 6px #ffe06688);
+  transition: transform 0.2s;
+}
+.flower .petal:hover {
+  transform: scale(1.08) rotate(-2deg);
+  z-index: 10;
+}
+
+.flower .petal1 { left: 20px; top: 0; transform: rotate(0deg); }
+.flower .petal2 { left: 0; top: 20px; transform: rotate(-60deg); }
+.flower .petal3 { left: 40px; top: 20px; transform: rotate(60deg); }
+.flower .petal4 { left: 10px; top: 40px; transform: rotate(-120deg); }
+.flower .petal5 { left: 30px; top: 40px; transform: rotate(120deg); }
+
+.flower .center {
+  position: absolute;
+  left: 27px;
+  top: 27px;
+  width: 26px;
+  height: 26px;
+  background: radial-gradient(circle at 60% 40%, #fffbe0 40%, #ffe066 80%, #ffd700 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 16px #ffe06699, 0 0 0 4px #fffbe044 inset;
+  border: 2px solid #ffe066;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flower .pistil {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #fffbe0 60%, #ffd700 100%);
+  border-radius: 50%;
+  z-index: 4;
+  box-shadow: 0 0 4px #ffe06699;
+}
+
+.ribbon {
+  position: absolute;
+  bottom: 60px;
+  left: 170px;
+  width: 60px;
+  height: 30px;
+  background: linear-gradient(120deg, #f7b731 60%, #ffe066 100%);
+  border-radius: 30px 30px 60px 60px/30px 30px 60px 60px;
+  z-index: 4;
+  box-shadow: 0 2px 8px #ffd70044;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ribbon::before, .ribbon::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 40px;
+  background: linear-gradient(120deg, #ffe066 60%, #f7b731 100%);
+  border-radius: 20px 20px 40px 40px/20px 20px 40px 40px;
+  bottom: -30px;
+}
+
+.ribbon::before { left: 0; transform: rotate(-20deg); }
+.ribbon::after { right: 0; transform: rotate(20deg); }
